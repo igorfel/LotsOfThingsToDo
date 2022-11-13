@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { PageTitle } from "../../components/common/PageTitle/PageTitle";
 import { supabase } from "../../config/supabaseClient";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
+  const [linkSent, setLinkSent] = useState(false);
   const [email, setEmail] = useState("");
 
   const handleLogin = async (e: any) => {
@@ -12,7 +14,7 @@ export default function Auth() {
       setLoading(true);
       const { error } = await supabase.auth.signInWithOtp({ email });
       if (error) throw error;
-      alert("Check your email for the login link!");
+      setLinkSent(true);
     } catch (error: any) {
       alert(error.error_description || error.message);
     } finally {
@@ -28,13 +30,15 @@ export default function Auth() {
 
   return (
     <div className="row flex-center flex">
+      <PageTitle>Entrar</PageTitle>
+
       <div className="col-6 form-widget" aria-live="polite">
         <h1 className="header">Lots of Things ToDo</h1>
         <p className="description">
-          Sign in via magic link with your email below
+          Entre com link mágico usando seu email abaixo
         </p>
         {loading ? (
-          "Sending magic link..."
+          "Enviando link mágico..."
         ) : (
           <form onSubmit={handleLogin}>
             <label htmlFor="email">Email</label>
@@ -42,12 +46,19 @@ export default function Auth() {
               id="email"
               className="inputField"
               type="email"
-              placeholder="Your email"
+              placeholder="Seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="button block" aria-live="polite" type="submit">
-              Send magic link
+            {linkSent && (
+              <span className="notify-span">Link enviado com sucesso!</span>
+            )}
+            <button
+              className="button block mt-2"
+              aria-live="polite"
+              type="submit"
+            >
+              Enviar link mágico
             </button>
             <button
               type="button"
@@ -55,7 +66,7 @@ export default function Auth() {
               aria-live="polite"
               onClick={signInWithGoogle}
             >
-              Sign in with Google
+              Entrar com Google
             </button>
           </form>
         )}

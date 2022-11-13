@@ -63,16 +63,16 @@ export default function Avatar({ url, size, onUpload }: AvatarProps) {
     <div style={{ width: size }} aria-live="polite">
       <img
         src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
-        alt={avatarUrl ? "Avatar" : "No image"}
+        alt={avatarUrl ? "Avatar" : "Sem imagem"}
         className="avatar image"
         style={{ height: size, width: size }}
       />
       {uploading ? (
-        "Uploading..."
+        "Enviando..."
       ) : (
         <>
           <label className="button primary block" htmlFor="single">
-            Upload an avatar
+            Envie seu avatar
           </label>
           <div className="visually-hidden">
             <input

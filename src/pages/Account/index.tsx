@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Avatar from "../../components/Avatar";
+import { PageTitle } from "../../components/common/PageTitle/PageTitle";
 import { supabase } from "../../config/supabaseClient";
 
 const Account = ({ session }: { session: any }) => {
@@ -69,8 +70,9 @@ const Account = ({ session }: { session: any }) => {
 
   return (
     <div aria-live="polite">
+      <PageTitle>Perfil</PageTitle>
       {loading ? (
-        "Saving ..."
+        "Carregando ..."
       ) : (
         <form onSubmit={updateProfile} className="form-widget">
           <Avatar
@@ -83,7 +85,7 @@ const Account = ({ session }: { session: any }) => {
           />
           <div>Email: {session.user.email}</div>
           <div>
-            <label htmlFor="username">Name</label>
+            <label htmlFor="username">Nome</label>
             <input
               id="username"
               type="text"
@@ -102,7 +104,7 @@ const Account = ({ session }: { session: any }) => {
           </div>
           <div>
             <button className="button primary block" disabled={loading}>
-              Update profile
+              Atualizar perfil
             </button>
           </div>
         </form>
@@ -112,7 +114,7 @@ const Account = ({ session }: { session: any }) => {
         className="button block"
         onClick={() => supabase.auth.signOut()}
       >
-        Sign Out
+        Sair
       </button>
     </div>
   );
