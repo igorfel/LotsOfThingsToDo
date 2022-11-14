@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Avatar from "../../components/Avatar";
+import { Link } from "react-router-dom";
+import AvatarUpload from "../../components/AvatarUpload";
 import { PageTitle } from "../../components/common/PageTitle/PageTitle";
 import { supabase } from "../../config/supabaseClient";
 
@@ -75,7 +76,7 @@ const Account = ({ session }: { session: any }) => {
         "Carregando ..."
       ) : (
         <form onSubmit={updateProfile} className="form-widget">
-          <Avatar
+          <AvatarUpload
             url={avatar_url}
             size={150}
             onUpload={(url) => {
@@ -107,11 +108,17 @@ const Account = ({ session }: { session: any }) => {
               Atualizar perfil
             </button>
           </div>
+          <Link to="/">
+            <button type="button" className="button block">
+              Minhas tarefas
+            </button>
+          </Link>
         </form>
       )}
+
       <button
         type="button"
-        className="button block"
+        className="button block mt-2"
         onClick={() => supabase.auth.signOut()}
       >
         Sair

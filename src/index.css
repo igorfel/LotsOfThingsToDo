@@ -380,8 +380,14 @@ button.primary,
   white-space: nowrap;
   width: 1px;
 }
+.mt-1 {
+  margin-top: 0.5rem;
+}
 .mt-2 {
   margin-top: 2rem;
+}
+.mr-1 {
+  margin-right: 0.5rem;
 }
 .notify-span {
   color: var(--custom-color-brand);

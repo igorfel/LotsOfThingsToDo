@@ -1,9 +1,8 @@
 import "./index.css";
 import { useState, useEffect } from "react";
 import { supabase } from "./config/supabaseClient";
-import Auth from "./pages/Auth";
-import Account from "./pages/Account";
 import { Session } from "@supabase/supabase-js";
+import Router from "./router";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -18,13 +17,16 @@ export default function App() {
     });
   }, []);
 
+  // console.log(session);
+
   return (
     <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {!session ? (
+      {/* {!session ? (
         <Auth />
       ) : (
         <Account key={session.user.id} session={session} />
-      )}
+      )} */}
+      <Router session={session} />
     </div>
   );
 }
