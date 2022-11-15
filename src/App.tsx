@@ -1,4 +1,3 @@
-import "./index.css";
 import { useState, useEffect } from "react";
 import { supabase } from "./config/supabaseClient";
 import { Session } from "@supabase/supabase-js";
@@ -17,15 +16,8 @@ export default function App() {
     });
   }, []);
 
-  // console.log(session);
-
   return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {/* {!session ? (
-        <Auth />
-      ) : (
-        <Account key={session.user.id} session={session} />
-      )} */}
+    <div className="bg-gray-900 text-white">
       <Router session={session} />
     </div>
   );

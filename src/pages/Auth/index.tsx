@@ -29,32 +29,58 @@ export default function Auth() {
   }
 
   return (
-    <div className="row flex-center flex">
+    <div className="flex">
       <PageTitle>Entrar</PageTitle>
 
-      <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">Lots of Things ToDo</h1>
-        <p className="description">
-          Entre com link mágico usando seu email abaixo
-        </p>
+      <div
+        className="flex flex-col items-center justify-center grow h-full"
+        aria-live="polite"
+      >
+        <div className="flex flex-col items-center my-10">
+          <h1 className="font-mono text-3xl font-bold">Lots of Things ToDo</h1>
+          <p className="text-sm">
+            Entre com link mágico usando seu email abaixo
+          </p>
+        </div>
         {loading ? (
           "Enviando link mágico..."
         ) : (
           <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              className="inputField"
-              type="email"
-              placeholder="Seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {linkSent && (
-              <span className="notify-span">Link enviado com sucesso!</span>
-            )}
+            <label className="block">
+              <span className="block text-md font-medium text-slate-500">
+                Email
+              </span>
+              <input
+                id="email"
+                className="form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                type="email"
+                placeholder="Seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {linkSent && (
+                <span className="text-sm text-green-500 mt-1">
+                  Link enviado com sucesso!
+                </span>
+              )}
+            </label>
+
             <button
-              className="button block mt-2"
+              className="mb-8 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
               aria-live="polite"
               type="submit"
             >
@@ -62,7 +88,7 @@ export default function Auth() {
             </button>
             <button
               type="button"
-              className="button block"
+              className="mb-2 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
               aria-live="polite"
               onClick={signInWithGoogle}
             >
