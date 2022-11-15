@@ -70,12 +70,16 @@ const Account = ({ session }: { session: any }) => {
   };
 
   return (
-    <div aria-live="polite">
+    <div
+      className="flex flex-col items-center mt-10 grow h-full px-6 max-w-lg"
+      aria-live="polite"
+    >
       <PageTitle>Perfil</PageTitle>
+
       {loading ? (
         "Carregando ..."
       ) : (
-        <form onSubmit={updateProfile} className="form-widget">
+        <form onSubmit={updateProfile} className="w-full">
           <AvatarUpload
             url={avatar_url}
             size={150}
@@ -85,31 +89,73 @@ const Account = ({ session }: { session: any }) => {
             }}
           />
           <div>Email: {session.user.email}</div>
-          <div>
-            <label htmlFor="username">Nome</label>
+          <label htmlFor="username">
+            <span className="block text-md font-medium text-slate-500">
+              Nome
+            </span>
+
             <input
               id="username"
               type="text"
               value={username || ""}
               onChange={(e: any) => setUsername(e.target.value)}
+              className="form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             />
-          </div>
-          <div>
-            <label htmlFor="website">Website</label>
+          </label>
+          <label htmlFor="website" className="mt-2">
+            <span className="block text-md font-medium text-slate-500">
+              Website
+            </span>
             <input
               id="website"
               type="url"
               value={website || ""}
               onChange={(e: any) => setWebsite(e.target.value)}
+              className="form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             />
-          </div>
+          </label>
+
           <div>
-            <button className="button primary block" disabled={loading}>
+            <button
+              className="mb-8 w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+              disabled={loading}
+            >
               Atualizar perfil
             </button>
           </div>
-          <Link to="/">
-            <button type="button" className="button block">
+          <Link to="/" className="w-full">
+            <button
+              type="button"
+              className="w-full px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+            >
               Minhas tarefas
             </button>
           </Link>
@@ -118,7 +164,7 @@ const Account = ({ session }: { session: any }) => {
 
       <button
         type="button"
-        className="button block mt-2"
+        className="block mt-4"
         onClick={() => supabase.auth.signOut()}
       >
         Sair
