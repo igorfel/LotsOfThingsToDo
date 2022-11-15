@@ -1,4 +1,4 @@
-import "./index.css";
+import "./styles/index.css";
 import { useState, useEffect } from "react";
 import { supabase } from "./config/supabaseClient";
 import { Session } from "@supabase/supabase-js";

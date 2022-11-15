@@ -99,9 +99,12 @@ export default function TodoList() {
     <div className="row flex-center flex">
       <PageTitle>Tarefas de Hoje</PageTitle>
 
-      <div className="col-6 form-widget" aria-live="polite">
+      <div
+        className="md:container md:mx-auto col-6 form-widget"
+        aria-live="polite"
+      >
         <div className="flex flex-center row">
-          <h1 className="header">Lots of Things ToDo</h1>
+          <h1 className="text-3x1 font-bold underline">Lots of Things ToDo</h1>
 
           <div style={{ margin: "auto" }}>
             <Link to={"/perfil"}>
